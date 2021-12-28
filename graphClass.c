@@ -78,6 +78,12 @@ void build_graph_cmd(pnode * head){
 }
 
 void insert_node_cmd(pnode * head, pnode item){
+    // EASY CASE - list isnt exist -> just point the head to the start and the list holds 1 nodes alone
+    if (*head == NULL){
+        *head = item;
+        return;
+    }
+    
     /* insert node item via node_id order 
     3 scenrios:
         1- item shall be added as the new head of the list
@@ -174,15 +180,23 @@ void delete_node_cmd(pnode * head, int node_id){
     free(node_to_del);           
 }
 
-pnode get_node(pnode head, int node_id){
-    pnode p = head;
+pnode get_node(pnode * head, int node_id){ 
+    /* if node_id is not exists: create new node and add it with insert function to the graph */
+    pnode p = *head;
     while (p){
         if (p->node_id == node_id){
             return p;
         }
         p = p->next;
     }
-    return NULL;
+    p = (node*)malloc(sizeof(node));
+    if (p == NULL){
+        deleteGraph_cmd(head);
+        return NULL;
+    }
+    p->node_id = node_id;
+    insert_node_cmd(head, p);
+    return p;
 }
 
 int get_size(pnode head){

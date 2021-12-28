@@ -24,7 +24,7 @@ void printGraph_cmd(pnode head); //for self debug
 void freeEdges(pedge eHead); // delete and free all the edges in that pointer array of edges
 void insert_node_cmd(pnode *head, pnode item);
 void delete_node_cmd(pnode *head, int node_id);
-pnode get_node(pnode head, int node_id);
+pnode get_node(pnode * head, int node_id);
 int get_size(pnode head);
 // ----
 
