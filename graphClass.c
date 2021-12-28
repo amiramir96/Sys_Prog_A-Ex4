@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <graph.h>
 typedef struct GRAPH_NODE_ *pnode; // shall be declared before struct edge since we hold node pointer inside the edge
 
 typedef struct edge_ { // edge struct
@@ -48,6 +48,9 @@ void freeEdges(pedge eHead){
 
 void deleteGraph_cmd(pnode* head){
     /* delete the whole graph, shall free every node and edge structs*/
+    if (*head == NULL){
+        return;
+    }
     // init vars
     pnode* p = head;
     pedge e;
@@ -191,104 +194,3 @@ int get_size(pnode head){
     }
     return size;
 }
-
-int main(){
-    pnode n1 = (node*)calloc(1,sizeof(node)); 
-    pnode n2 = (node*)calloc(1,sizeof(node)); 
-    pnode n0 = (node*)calloc(1,sizeof(node)); 
-    
-    n1->node_id = 1;
-    n2->node_id = 2;
-    n0-> node_id = 0;
-    n1->next = n2;
-    // n2->next = n3;
-        
-    printGraph_cmd(n1);
-    printf("hello! we printed graph!\n\n");
-
-    pedge e1, e2, e3;
-    n1->edges = (edge*)calloc(1,sizeof(edge));
-    e1 = n1->edges;
-    e1->endpoint = n2;
-    e1->weight=1;
-
-    e1->next = (edge*)calloc(1,sizeof(edge));
-    e1 = e1->next;
-    e1->endpoint = n0;
-    e1->weight = 7;
-    if (e1->next == NULL){
-        printf("true\n");
-    }
-    else{
-        printf("false\n");
-    }
-    pnode * head;
-    head = &n1;
-    
-    insert_node_cmd(head, n0);
-    printf("hi we added item to the graph!\n\n");
-    printGraph_cmd(*head);
-    printf("printed again^^\n\n");
-    get_node(*head, 18);
-
-    char chr, in;
-    int flag;
-    pnode * head;
-    pnode n;
-    pedge e;
-
-    for(;;){
-        scanf("%c",&chr);
-        if (chr == 'A'){
-            flag = 0;
-            while(1){
-                scanf("%c",&chr);
-                if(chr == 'n'){
-                    flag = 1;    
-                }   
-                else if(flag == 1){ // input for edges
-
-                }
-                else if(flag == 0){ // input for node_id
-
-                }
-
-            }
-
-        }
-
-
-    }
-
-
-
-
-}
-
-
-
-
-// void removeDestNodeFromEdges(pedge eHead, int node_id){
-//     /* loop over all the edges of specific node and delete them -> means, free those edges */
-//     pedge toDeleteEdge;
-//     pedge prev;
-//     prev = eHead;
-//     if (eHead->endpoint->node_id == node_id){
-//         toDeleteEdge = eHead;
-//         eHead = eHead->next;
-//         free(toDeleteEdge);
-//         return; // found the relevant edge to remove and deleted it.
-//     }
-//     pedge p = eHead;
-//     prev = p;
-//     while (p){
-//         p = p->next;
-//         if (p->endpoint->node_id == node_id){
-//             toDeleteEdge = p;
-//             p = p->next;
-//             prev->next = p;
-//             free(toDeleteEdge);
-//             return; // found the relevant edge to remove and deleted it.
-//         }
-//     }
-// }
