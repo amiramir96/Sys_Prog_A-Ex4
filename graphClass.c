@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <graph.h>
 typedef struct GRAPH_NODE_ *pnode; // shall be declared before struct edge since we hold node pointer inside the edge
 
 typedef struct edge_ { // edge struct
@@ -182,6 +181,11 @@ void delete_node_cmd(pnode * head, int node_id){
 
 pnode get_node(pnode * head, int node_id){ 
     /* if node_id is not exists: create new node and add it with insert function to the graph */
+    if (node_id < 0){ 
+        // invalid node_id number
+        return NULL;
+    }
+    
     pnode p = *head;
     while (p){
         if (p->node_id == node_id){
@@ -200,6 +204,7 @@ pnode get_node(pnode * head, int node_id){
 }
 
 int get_size(pnode head){
+    /* return size of node -> O(n) running time! its expensive function! */
     pnode p = head;
     int size = 0;
     while (p){
