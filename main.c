@@ -99,7 +99,7 @@ int main(){
             int src, dest;
             scanf("%d",src);
             scanf("%d",dest);
-            printf("Dijsktra shortest path: %d\n",shortsPath_cmd(*head, src, dest));
+            printf("Dijsktra shortest path: %d\n",shortesPath_cmd(*head, src, dest));
         }
         else if (chr == 'T'){ // TSP - idont know when we ended to get inputs for TSP...
             int size = get_size(*head);
