@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "graph.h"
 #include <math.h>
+#include <limits.h>
 
 /**
  * @brief set all nodes distances to 'inf' except the src node which will be 0
@@ -44,7 +45,7 @@ int shortest_path(pnode head, int src, int dest){
     initiate_nodes(head, src);
     int min_node_id = 0;
     while(min_node_id != -1){//stop if no relevant node was found
-        print_status(head);
+        // print_status(head);  // debug print
         min_node_id = -1;
         curr_node = head;
         int min_dist = -1;
@@ -77,7 +78,62 @@ int shortest_path(pnode head, int src, int dest){
     //how to improve- efficient data structure to keep relevant nodes (state 1)
 }
 
+int get_node_index(int **arr, int len, int id){
+    for (int i = 0; i < len; i++)
+    {
+        if(arr[0][i] == id){
+            return i;
+        }
+    }
+    return -1;
+    
+}
 
-int TSP(pnode head, pnode tspArr){
+int get_distance(int **dists, int len, int path[]){
+    //clculate length of path
+    int dist = 0;
+    for (int i = 0; i < len-1; i++)
+    {
+        int src_i = get_node_index(dists, len, path[i]);
+        int dest_i = get_node_index(dists, len, path[i+1]);
+        dist += dists[src_i][dest_i]; 
+    }
+    return dist;
+}
+
+
+int recursive_TSP(int dists[][], int path[], int len1, int cities[], int len2){
+    if(len2 == 0){
+        return get_distance(dists, path, len1);
+    }
+    int min_dist = INT_MAX;
+    for (int i = 0; i < len2; i++){
+        path[len1] = cities[i];//extend path by 1 node
+        int curr_dist = recursive_TSP(dists, path, len1+1, cities, len2-1);
+        if(curr_dist != -1 && min_dist > curr_dist){
+            min_dist = curr_dist;
+        }
+    }
+    return min_dist;
+}
+
+
+int TSP(pnode head, int * tspArr, int size){
+    // TODO create dists matrix (compute pairs distance, first row is nodes id)
+    int dists[size+1][size+1];
+    dists[0][0] = -1;
+    for (int i = 0; i < size; i++)
+    {
+        //set rows and columns to node_id
+        dists[0][i] = tspArr[i];
+        dists[i][0] = tspArr[i];
+    }
+    //fill the matrix- TODO
+    
+    // run rec_TSP
+    int min_dist = INT_MAX;
+    if(min_dist == INT_MAX){
+        return -1;
+    }
     return -2;
 }

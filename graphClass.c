@@ -236,7 +236,7 @@ int shortesPath_cmd(pnode head, int src, int dest){
     return -2;
 }
 
-int TSP_cmd(pnode head, pnode tspArr){
+int TSP_cmd(pnode head, int * tspArr, int size){
     return -2;
 }
 
