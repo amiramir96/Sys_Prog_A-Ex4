@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "graph.h"
 #include <math.h>
 
@@ -15,7 +16,7 @@ void initiate_nodes(pnode head, int src){
     while(curr->next){
         curr->dist = -1; 
         curr->state = 0;
-        curr = head->next;
+        curr = curr->next;
     }
     curr = get_node(&head, src);
     curr -> dist = 0;
@@ -42,9 +43,10 @@ int shortest_path(pnode head, int src, int dest){
                     min_node_id = curr_node -> node_id;
                 }
             }
+            curr_node = curr_node->next;
         }
         if(min_node_id != -1){
-            curr_node = get_node(head, min_node_id);
+            curr_node = get_node(&head, min_node_id);
             pedge e= curr_node -> edges;
             //ease edges
             while(e){
@@ -53,11 +55,12 @@ int shortest_path(pnode head, int src, int dest){
                     e->endpoint->state = 1;
                     e->endpoint -> dist = curr_node->dist + e->weight;
                 }
+                e = e->next;
             }
             curr_node -> state = 2;
         }
     }
-    pnode dest_pnode = get_node(head, dest);
+    pnode dest_pnode = get_node(&head, dest);
     return dest_pnode -> dist; 
     //how to improve- efficient data structure to keep relevant nodes (state 1)
 }

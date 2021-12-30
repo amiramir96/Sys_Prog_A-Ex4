@@ -7,8 +7,14 @@ all: Ex4prog
 Ex4prog: main.o graphAlgo.so graph.so
 	$(CC) $(FLAGS) -o Ex4prog main.o ./graphAlgo.so ./graph.so
 
+tests: tests.o graphAlgo.so graph.so
+	$(CC) $(FLAGS) -o tests tests.o ./graphAlgo.so ./graph.so
+
 main.o: main.c graphAlgo.h graph.h
 	$(CC) $(FLAGS) -c main.c
+
+tests.o: tests.c graphAlgo.h graph.h
+	$(CC) $(FLAGS) -c tests.c
 
 graphAlgo.so: graphAlgo.o
 	$(CC) $(FLAGS) -shared -o graphAlgo.so graphAlgo.o  
@@ -24,4 +30,4 @@ graphAlgo.o: graphAlgo.c graph.h
 
 
 clean:
-	rm -f *.o *.a *.so Ex4prog
+	rm -f *.o *.a *.so Ex4prog tests
