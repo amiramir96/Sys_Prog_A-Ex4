@@ -29,6 +29,6 @@ int get_size(pnode head);
 // ----
 
 int shortesPath_cmd(pnode head, int src, int dest);
-int TSP_cmd(pnode head, pnode tspArr);
+int TSP_cmd(pnode head, int * tspArr, int size);
 
 #endif

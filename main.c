@@ -92,13 +92,13 @@ int main(){
 
         }
         else if (chr == 'D'){ // delete node
-            scanf("%d",node_id);
+            scanf("%d",&node_id);
             delete_node_cmd(head, node_id);
         }
         else if (chr == 'S'){ // shortest path
             int src, dest;
-            scanf("%d",src);
-            scanf("%d",dest);
+            scanf("%d",&src);
+            scanf("%d",&dest);
             printf("Dijsktra shortest path: %d\n",shortesPath_cmd(*head, src, dest));
         }
         else if (chr == 'T'){ // TSP - idont know when we ended to get inputs for TSP...
@@ -113,8 +113,9 @@ int main(){
                 arr[i] = num;
                 i++;
             }
+            
             realloc(&arr[0], sizeof(i));
-            printf("TSP shortest path: %d\n",TSP_cmd(*head, &arr[0]));
+            printf("TSP shortest path: %d\n",TSP_cmd(*head, &arr[0], i));
 
             free(arr);
         }
