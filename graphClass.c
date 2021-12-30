@@ -12,6 +12,8 @@ typedef struct GRAPH_NODE_ { // node struct
     int node_id;
     pedge edges;
     struct GRAPH_NODE_* next;
+    int dist;
+    int state;
 } node, *pnode;
 
 void printGraph_cmd(pnode head){
@@ -213,3 +215,13 @@ int get_size(pnode head){
     }
     return size;
 }
+
+int shortesPath_cmd(pnode head, int src, int dest){
+    //return shortest_path(head, src, dest);
+    return -2;
+}
+
+int TSP_cmd(pnode head, pnode tspArr){
+    return -2;
+}
+

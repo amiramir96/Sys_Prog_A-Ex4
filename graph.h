@@ -14,6 +14,8 @@ typedef struct GRAPH_NODE_ {
     int node_id;
     pedge edges;
     struct GRAPH_NODE_ *next;
+    int dist;
+    int state;
 } node, *pnode;
 
 // amir ---
