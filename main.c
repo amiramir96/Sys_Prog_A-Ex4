@@ -17,7 +17,9 @@ int main(){
         scanf("%c",&chr);
         
         if (chr == 'A'){ // case A create whole graph (linked list of nodes and ea node hold list of edges)
-            deleteGraph_cmd(head);
+            if (head != NULL){
+                deleteGraph_cmd(head);
+            }
             scanf("%d",&num_of_nodes);
             scanf("%c",&chr);
             if (num_of_nodes <= 0){
@@ -114,7 +116,10 @@ int main(){
                 i++;
             }
             
-            realloc(&arr[0], sizeof(i));
+            if (realloc(&arr[0], sizeof(i) == NULL){
+                deleteGraph_cmd(head);
+                return -1;
+            }
             printf("TSP shortest path: %d\n",TSP_cmd(*head, &arr[0], i));
 
             free(arr);
