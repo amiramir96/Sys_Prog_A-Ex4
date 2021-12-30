@@ -13,7 +13,7 @@ void initiate_nodes(pnode head, int src){
     //state- describes state of node i dijksta process: 0- dist is -1, 1- seen but not visited, 2- visited.
 
     pnode curr = head;
-    while(curr->next){
+    while(curr){
         curr->dist = -1; 
         curr->state = 0;
         curr = curr->next;
@@ -21,6 +21,16 @@ void initiate_nodes(pnode head, int src){
     curr = get_node(&head, src);
     curr -> dist = 0;
     curr -> state = 1;
+}
+
+void print_status(pnode head){//for debug help
+    printf("***\n");
+    while(head){
+        printf("dist of node %d: %d\n",head->node_id, head->dist);
+        printf("state of node %d: %d\n",head->node_id, head->state);
+        head = head->next;
+    }
+    printf("***\n");
 }
 
 int shortest_path(pnode head, int src, int dest){
@@ -34,6 +44,7 @@ int shortest_path(pnode head, int src, int dest){
     initiate_nodes(head, src);
     int min_node_id = 0;
     while(min_node_id != -1){//stop if no relevant node was found
+        print_status(head);
         min_node_id = -1;
         curr_node = head;
         int min_dist = -1;
@@ -41,6 +52,7 @@ int shortest_path(pnode head, int src, int dest){
             if(curr_node->state == 1){
                 if(min_dist == -1 || min_dist > curr_node -> dist){
                     min_node_id = curr_node -> node_id;
+                    min_dist = curr_node->dist;
                 }
             }
             curr_node = curr_node->next;

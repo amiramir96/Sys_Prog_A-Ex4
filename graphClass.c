@@ -120,6 +120,7 @@ void insert_node_cmd(pnode * head, pnode item){
     return;
 }
 
+
 void delete_node_cmd(pnode * head, int node_id){
     /*
     stages:
@@ -214,6 +215,20 @@ int get_size(pnode head){
         p = p->next;
     }
     return size;
+}
+
+void insert_edge(pnode head, int from, int weight, int to){
+    pedge e = (edge *)malloc(sizeof(edge));
+    e->endpoint = get_node(&head, to);
+    e->weight = weight;
+    e->next = NULL;
+    pnode pn = get_node(&head, from);
+    pedge *pe = &(pn->edges);
+    while(*pe){
+        pe = &((*pe)->next);
+    }
+    *pe = e; //set next to e
+    return;
 }
 
 int shortesPath_cmd(pnode head, int src, int dest){
