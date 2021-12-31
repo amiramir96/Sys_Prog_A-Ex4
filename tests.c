@@ -9,13 +9,16 @@ int main(){
     pnode n0 = (node*)calloc(1,sizeof(node)); 
     pnode n1 = (node*)calloc(1,sizeof(node)); 
     pnode n2 = (node*)calloc(1,sizeof(node)); 
+    pnode n3 = (node*)calloc(1,sizeof(node)); 
     
     n0-> node_id = 0;
     n1->node_id = 1;
     n2->node_id = 2;
+    n3->node_id = 3;
     insert_node_cmd(&head, n0);
     insert_node_cmd(&head, n1);
     insert_node_cmd(&head, n2);
+    insert_node_cmd(&head, n3);
     printf("print graph (nodes only):\n");
     printGraph_cmd(head);
     //n0->next = n1;
@@ -53,5 +56,16 @@ int main(){
     printf("distance from 1 to 2: %d\n", dist2);
     printf("distance from 0 to 2: %d\n", dist3);
     printf("distance from 2 to 0: %d\n", dist4);
+    printf("run TSP on 0,1,2\n");
+    int arr1[]={0,1,2};
+    int arr2[]={1,2};
+    int arr3[]={1,4};
+    int path1 = TSP(head, arr1, 3);
+    int path2 = TSP(head, arr2, 2);
+    int path3 = TSP(head, arr3, 2);
+    printf("TSP for 0,1,2: %d\n", path1);
+    printf("TSP for 1,2: %d\n", path2);
+    printf("TSP for 1,3: %d\n", path3);
+    
     deleteGraph_cmd(&head);
 }
