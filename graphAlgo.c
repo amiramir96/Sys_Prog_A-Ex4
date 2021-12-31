@@ -41,7 +41,7 @@ int shortest_path(pnode head, int src, int dest){
     //  {run over list, take minimal distance node as current
     //  update distance to nighbors, add them to list. set current to visited.}
     //repeat until list is empty
-
+    pnode dest_pnode = get_node(&head, dest);
     pnode curr_node = head;
     initiate_nodes(head, src);
     int min_node_id = 0;
@@ -74,7 +74,7 @@ int shortest_path(pnode head, int src, int dest){
             curr_node -> state = 2;
         }
     }
-    pnode dest_pnode = get_node(&head, dest);
+    
     return dest_pnode -> dist; 
     //how to improve- efficient data structure to keep relevant nodes (state 1)
 }
