@@ -12,8 +12,8 @@ int main(){
     pnode n;
     pedge e, tempE;
     
-    for(;scanf(" %c",&chr) != 0 && chr != '\n' && chr != '\0';){
-        
+    for(;;){
+        scanf(" %c",&chr);
         
         if (chr == 'A'){ // case A create whole graph (linked list of nodes and ea node hold list of edges)
             if (head != NULL){
