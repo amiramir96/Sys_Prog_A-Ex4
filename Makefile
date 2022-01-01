@@ -2,10 +2,10 @@ CC = gcc
 FLAGS = -g -Wall
 .PHONY: clean
 
-all: Ex4prog
+all: graph
 
-Ex4prog: main.o graphAlgo.so graph.so
-	$(CC) $(FLAGS) -o Ex4prog main.o ./graphAlgo.so ./graph.so
+graph: main.o graphAlgo.so graph.so
+	$(CC) $(FLAGS) -o graph main.o ./graphAlgo.so ./graph.so
 
 tests: tests.o graphAlgo.so graph.so
 	$(CC) $(FLAGS) -o tests tests.o ./graphAlgo.so ./graph.so
@@ -30,4 +30,4 @@ graphAlgo.o: graphAlgo.c graph.h
 
 
 clean:
-	rm -f *.o *.a *.so Ex4prog tests
+	rm -f *.o *.a *.so graph tests
