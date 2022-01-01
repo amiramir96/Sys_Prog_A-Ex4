@@ -94,7 +94,6 @@ int main(){
         else {
             break;
         }
-        chr = 'q';
     }
     if (head != NULL){
         deleteGraph_cmd(&head);
