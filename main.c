@@ -13,6 +13,7 @@ int main(){
     pedge e, tempE;
     
     for(;;){
+        chr = 'q';
         scanf(" %c",&chr);
         
         if (chr == 'A'){ // case A create whole graph (linked list of nodes and ea node hold list of edges)
