@@ -90,7 +90,6 @@ int main(){
                 deleteGraph_cmd(&head);
                 return -1;
             }
-            printGraph_cmd(head);
             printf("TSP shortest path: %d\n",TSP(head, &arr[0], i));
             free(arr);
         }
