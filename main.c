@@ -13,7 +13,8 @@ int main(){
     pedge e, tempE;
     
     for(;;){
-        if (scanf(" %c",&chr)!=1){
+        scanf(" %c",&chr);
+        if (chr != 'A' && chr != 'B' && chr != 'D' && chr != 'S' && chr != 'T'){
             break;
         }
         
