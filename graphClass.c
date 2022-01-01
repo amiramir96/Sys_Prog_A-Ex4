@@ -97,6 +97,9 @@ void insert_node_cmd(pnode * head, pnode item){
         *head = item;
         return;
     }
+    if ((*head)->node_id == item->node_id){
+        return;
+    }
     
     // init vars
     pnode* p = head;
@@ -105,6 +108,9 @@ void insert_node_cmd(pnode * head, pnode item){
     // case 2:
     while(next){
     // loop over all the node "linked list"
+        if(next->node_id == item->node_id){
+            return;
+        }
         if(next->node_id > item->node_id){
             (*p)->next = item;
             item->next = next;
@@ -203,6 +209,9 @@ pnode get_node(pnode * head, int node_id){
         return NULL;
     }
     p->node_id = node_id;
+
+    printf("gonna add via get_node func: %d\n",p->node_id);
+
     insert_node_cmd(head, p);
     return p;
 }
@@ -218,12 +227,16 @@ int get_size(pnode head){
     return size;
 }
 
-void insert_edge(pnode head, int from, int weight, int to){
+void insert_edge(pnode * head, int from, int weight, int to){
     pedge e = (edge *)malloc(sizeof(edge));
-    e->endpoint = get_node(&head, to);
+    if (e == NULL){
+        printf("failed to allocate memory, edge from %d, weight %d, to %d\n",from, weight, to);
+        return;
+    }
+    e->endpoint = get_node(head, to);
     e->weight = weight;
     e->next = NULL;
-    pnode pn = get_node(&head, from);
+    pnode pn = get_node(head, from);
     pedge *pe = &(pn->edges);
     while(*pe){
         pe = &((*pe)->next);
@@ -232,12 +245,11 @@ void insert_edge(pnode head, int from, int weight, int to){
     return;
 }
 
-int shortesPath_cmd(pnode head, int src, int dest){
-    //return shortest_path(head, src, dest);
-    return -2;
-}
+// int shortesPath_cmd(pnode head, int src, int dest){
+//     return shortest_path(head, src, dest);
+// }
 
-int TSP_cmd(pnode head, int * tspArr, int size){
-    return -2;
-}
+// int TSP_cmd(pnode head, int * tspArr, int size){
+//     return TSP(head, tspArr,)
+// }
 

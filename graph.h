@@ -25,13 +25,13 @@ void build_graph_cmd(pnode *head);
 void printGraph_cmd(pnode head); //for self debug
 void freeEdges(pedge eHead); // delete and free all the edges in that pointer array of edges
 void insert_node_cmd(pnode *head, pnode item);
-void insert_edge(pnode head, int from, int weight, int to);
+void insert_edge(pnode *head, int from, int weight, int to);
 void delete_node_cmd(pnode *head, int node_id);
 pnode get_node(pnode * head, int node_id);
 int get_size(pnode head);
 // ----
 
-int shortesPath_cmd(pnode head, int src, int dest);
-int TSP_cmd(pnode head, int * tspArr, int size);
+// int shortesPath_cmd(pnode head, int src, int dest);
+// int TSP_cmd(pnode head, int * tspArr, int size);
 
 #endif

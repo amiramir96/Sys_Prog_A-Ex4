@@ -24,10 +24,10 @@ int main(){
     //n0->next = n1;
     //n1->next = n2;
     // n2->next = n3;
-    insert_edge(head, 0, 3, 1);
-    insert_edge(head, 1, 2, 2);
-    insert_edge(head, 2, 5, 1);
-    insert_edge(head, 0, 6, 2);
+    insert_edge(&head, 0, 3, 1);
+    insert_edge(&head, 1, 2, 2);
+    insert_edge(&head, 2, 5, 1);
+    insert_edge(&head, 0, 6, 2);
     // pedge e1, e2, e3;
     // n1->edges = (edge*)calloc(1,sizeof(edge));
     // e1 = n1->edges;

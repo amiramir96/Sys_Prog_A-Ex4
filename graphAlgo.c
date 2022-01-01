@@ -26,13 +26,13 @@ void initiate_nodes(pnode head, int src){
 }
 
 void print_status(pnode head){//for debug help
-    printf("***\n");
+            // printf("***\n");
     while(head){
-        printf("dist of node %d: %d\n",head->node_id, head->dist);
-        printf("state of node %d: %d\n",head->node_id, head->state);
+            // printf("dist of node %d: %d\n",head->node_id, head->dist);
+            // printf("state of node %d: %d\n",head->node_id, head->state);
         head = head->next;
     }
-    printf("***\n");
+            //printf("***\n");
 }
 
 int shortest_path(pnode head, int src, int dest){
@@ -162,16 +162,16 @@ int TSP(pnode head, int * tspArr, int size){
         
     }
     //debug print matrix
-    printf("dist matrix:\n");
+            // printf("dist matrix:\n");
     for (int i = 0; i < size+1; i++)
     {
         for (int j = 0; j < size+1; j++)
         {
-            printf("%d,",dists[i][j]);
+            // printf("%d,",dists[i][j]);
         }
-        putchar('\n'); 
+            // putchar('\n'); 
     }
-    // printf("dist from 0 to 1: %d\n",dists[1][2]);
+            // printf("dist from 0 to 1: %d\n",dists[1][2]);
     int *path = (int *)malloc(size*sizeof(int));
     int min_dist = recursive_TSP(size+1, dists, path, 0, tspArr, size);
     free(path);
