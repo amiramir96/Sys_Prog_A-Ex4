@@ -44,7 +44,6 @@ int main(){
                 }
                 idx++;
             }
-            printGraph_cmd(head);
         }
         else if (chr == 'B'){ // B case - add specific one node
             if (scanf(" %d ",&node_id)){ // else, skip.
@@ -95,6 +94,7 @@ int main(){
         else {
             break;
         }
+        chr = 'q';
     }
     if (head != NULL){
         deleteGraph_cmd(&head);

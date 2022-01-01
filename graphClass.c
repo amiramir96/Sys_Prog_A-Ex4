@@ -209,9 +209,6 @@ pnode get_node(pnode * head, int node_id){
         return NULL;
     }
     p->node_id = node_id;
-
-    printf("gonna add via get_node func: %d\n",p->node_id);
-
     insert_node_cmd(head, p);
     return p;
 }
