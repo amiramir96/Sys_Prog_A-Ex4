@@ -116,7 +116,7 @@ int main(){
                 i++;
             }
             
-            if (realloc(&arr[0], sizeof(i) == NULL){
+            if (realloc(&arr[0], sizeof(i)) == NULL){
                 deleteGraph_cmd(head);
                 return -1;
             }

@@ -56,7 +56,7 @@ void deleteGraph_cmd(pnode* head){
     pnode* p = head;
     pedge e;
     pnode toFreeNode;
-    pedge toFreeEdge;
+    // pedge toFreeEdge;
     
     while(*p)
     // loop over all the node "linked list"
@@ -149,7 +149,7 @@ void delete_node_cmd(pnode * head, int node_id){
     }
     // stage 2:
     p = *head;
-    pedge eHead;
+    pedge eHead = (pedge)malloc(sizeof(pedge));
     pedge prev;
     pedge toDeleteEdge;
     while (p != NULL){
@@ -177,6 +177,7 @@ void delete_node_cmd(pnode * head, int node_id){
         }    
         p = p->next;
     }
+    free(eHead);
     // stage 3:
     freeEdges(node_to_del->edges);
     free(node_to_del);           
