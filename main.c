@@ -8,7 +8,7 @@ int main(){
     int num_of_nodes, idx, node_id;
     int weight, dest_node;
     int num;
-    pnode * head;
+    pnode * head = NULL;
     pnode n;
     pedge e, tempE;
 
