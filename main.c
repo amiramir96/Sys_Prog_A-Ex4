@@ -13,7 +13,9 @@ int main(){
     pedge e, tempE;
     
     for(;;){
-        scanf(" %c",&chr);
+        if (scanf(" %c",&chr)!=1){
+            break;
+        }
         
         if (chr == 'A'){ // case A create whole graph (linked list of nodes and ea node hold list of edges)
             if (head != NULL){
@@ -44,8 +46,6 @@ int main(){
                 }
                 idx++;
             }
-            chr = 'q';
-
         }
         else if (chr == 'B'){ // B case - add specific one node
             if (scanf(" %d ",&node_id)){ // else, skip.
@@ -62,19 +62,16 @@ int main(){
                     insert_edge(&head, n->node_id, weight, dest_node);
                 }
             }
-            chr = 'q';
         }
         else if (chr == 'D'){ // delete node
             scanf(" %d ",&node_id);
             delete_node_cmd(&head, node_id);
-            chr = 'q';
         }
         else if (chr == 'S'){ // shortest path
             int src, dest;
             scanf(" %d ",&src);
             scanf(" %d ",&dest);
             printf("Dijsktra shortest path: %d\n",shortest_path(head, src, dest));
-            chr = 'q';
         }
         else if (chr == 'T'){ // TSP - idont know when we ended to get inputs for TSP...
             int size = get_size(head);
@@ -95,7 +92,6 @@ int main(){
             printGraph_cmd(head);
             printf("TSP shortest path: %d\n",TSP(head, &arr[0], i));
             free(arr);
-            chr = 'q';
         }
         else {
             break;
