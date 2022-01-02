@@ -76,7 +76,8 @@ int main(){
                 return -1;
             }
             int i = 0;
-            while (scanf("%d ",&num)){
+            while (i < size){
+                scanf("%d ",&num);
                 arr[i] = num;
                 i++;
             }
