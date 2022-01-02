@@ -43,14 +43,14 @@ int main(){
         }
         else if (chr == 'B'){ // B case - add specific one node
             if (scanf("%d ",&node_id)){ // else, skip.
-                n = get_node(&head, node_id);
+                n = get_node(&head, node_id);  // get or add&&get node to the linked list of nodes 
                 if (n->edges != NULL){
                     freeEdges(&(n->edges));
                     if (n->edges != NULL){
                         n->edges = NULL;
                     }
                 }
-                insert_node_cmd(&head, n); // add node to the linked list of nodes 
+                // insert_node_cmd(&head, n);
                 while (scanf("%d ",&dest_node) == 1){
                     scanf("%d ",&weight);
                     insert_edge(&head, n->node_id, weight, dest_node);
@@ -83,7 +83,7 @@ int main(){
             printf("TSP shortest path: %d \n",TSP(head, &arr[0], i));
             free(arr);
         }
-        printGraph_cmd(head);
+        // printGraph_cmd(head);
     }
     if (head != NULL){
         deleteGraph_cmd(&head);
