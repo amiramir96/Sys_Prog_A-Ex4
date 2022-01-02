@@ -12,7 +12,7 @@ int main(){
     pnode n;
     // pedge e, tempE;
     
-    for(;scanf(" %c",&chr)!=EOF && chr != '\0';){
+    for(;scanf(" %c",&chr)!=EOF;){
         if (chr == 'A'){ // case A create whole graph (linked list of nodes and ea node hold list of edges)
             if (head != NULL){
                 deleteGraph_cmd(&head);
