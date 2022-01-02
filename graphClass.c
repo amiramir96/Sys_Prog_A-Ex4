@@ -35,14 +35,16 @@ void printGraph_cmd(pnode head){
     }
 }
 
-void freeEdges(pedge eHead){
+void freeEdges(pedge * eHead){
     /* loop over all the edges of specific node and delete them -> means, free those edges */
     pedge toFreeEdge;
-    while (eHead){
-        toFreeEdge = eHead;
-        eHead = eHead->next;
-
+    while (*eHead){
+        toFreeEdge = *eHead;
+        eHead = &((*eHead)->next);
         free(toFreeEdge);
+    }
+    if (*eHead != NULL){
+        free(*eHead);
     }
 }
 
@@ -64,7 +66,7 @@ void deleteGraph_cmd(pnode* head){
         toFreeNode = *p;
         e = toFreeNode->edges;
         if (e != NULL){
-            freeEdges(e);    
+            freeEdges(&e);    
         }
         p = &((*p)->next);
         free(toFreeNode);
@@ -185,7 +187,7 @@ void delete_node_cmd(pnode * head, int node_id){
     }
     free(eHead);
     // stage 3:
-    freeEdges(node_to_del->edges);
+    freeEdges(&(node_to_del->edges));
     free(node_to_del);           
 }
 
@@ -238,8 +240,7 @@ void insert_edge(pnode * head, int from, int weight, int to){
     while(*pe){
         pe = &((*pe)->next);
     }
-    *pe = e;
-    (*pe)->next = NULL; //set next to e
+    *pe = e; //set next to e
     return;
 }
 
