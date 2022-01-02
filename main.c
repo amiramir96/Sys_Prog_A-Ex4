@@ -81,7 +81,6 @@ int main(){
             free(arr);
         }
     }
-    printGraph_cmd(head);
     if (head != NULL){
         deleteGraph_cmd(&head);
     }
