@@ -12,7 +12,7 @@ int main(){
     pnode n;
     // pedge e, tempE;
     
-    for(;scanf(" %c",&chr)!=-1;){
+    for(;scanf(" %c",&chr)!=EOF;){
         
         if (chr != 'A' && chr != 'B' && chr != 'D' && chr != 'S' && chr != 'T'){
             break;
@@ -92,9 +92,6 @@ int main(){
             }
             printf("TSP shortest path: %d\n",TSP(head, &arr[0], i));
             free(arr);
-        }
-        else {
-            break;
         }
     }
     if (head != NULL){
