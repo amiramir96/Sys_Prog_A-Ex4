@@ -12,8 +12,8 @@ int main(){
     pnode n;
     pedge e, tempE;
     
-    for(;;){
-        scanf(" %c",&chr);
+    for(;scanf(" %c",&chr)!=EOF;){
+        
         if (chr != 'A' && chr != 'B' && chr != 'D' && chr != 'S' && chr != 'T'){
             break;
         }
