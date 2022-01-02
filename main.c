@@ -10,9 +10,9 @@ int main(){
     int num;
     pnode head = NULL;
     pnode n;
-    pedge e, tempE;
+    // pedge e, tempE;
     
-    for(;putc("%c",&chr)!=EOF;){
+    for(;scanf(" %c",&chr)!=EOF;){
         
         if (chr != 'A' && chr != 'B' && chr != 'D' && chr != 'S' && chr != 'T'){
             break;
@@ -30,17 +30,17 @@ int main(){
 
             idx = 0;
             while(idx < num_of_nodes){
-                putc("%c ",&chr);
+                scanf(" %c ",&chr);
                 scanf(" %d ",&node_id); // start of new node
                 n = (pnode)malloc(sizeof(node));
                 if (n == NULL){
                     deleteGraph_cmd(&head);
-                    return;
+                    return -1;
                 }
                 n->node_id = node_id;
                 insert_node_cmd(&head, n); // add node to the linked list of nodes 
 
-                e = n->edges; // add the edges now.
+                // e = n->edges; // add the edges now.
                 while (scanf(" %d ",&dest_node) == 1){
                     scanf(" %d ",&weight);
                     insert_edge(&head, n->node_id, weight, dest_node);
@@ -53,7 +53,7 @@ int main(){
                 n = (pnode)malloc(sizeof(node));
                 if (n == NULL){
                     deleteGraph_cmd(&head);
-                    return;
+                    return -1;
                 }
                 n->node_id = node_id;
                 insert_node_cmd(&head, n); // add node to the linked list of nodes 
