@@ -12,7 +12,7 @@ int main(){
     pnode n;
     pedge e, tempE;
     
-    for(;putc(" %c",&chr)!=EOF;){
+    for(;putc("%c",&chr)!=EOF;){
         
         if (chr != 'A' && chr != 'B' && chr != 'D' && chr != 'S' && chr != 'T'){
             break;
@@ -30,7 +30,7 @@ int main(){
 
             idx = 0;
             while(idx < num_of_nodes){
-                putc(" %c ",&chr);
+                putc("%c ",&chr);
                 scanf(" %d ",&node_id); // start of new node
                 n = (pnode)malloc(sizeof(node));
                 if (n == NULL){
