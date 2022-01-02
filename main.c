@@ -36,6 +36,8 @@ int main(){
                     insert_edge(&head, n->node_id, weight, dest_node);
                 }
                 idx++;
+                printGraph_cmd(head);
+                printf("\n");
             }
         }
         else if (chr == 'B'){ // B case - add specific one node
