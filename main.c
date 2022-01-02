@@ -67,7 +67,7 @@ int main(){
             int src, dest;
             scanf(" %d ",&src);
             scanf(" %d ",&dest);
-            printf("Dijsktra shortest path: %d\n",shortest_path(head, src, dest));
+            printf("Dijsktra shortest path: %d \n",shortest_path(head, src, dest));
         }
         else if (chr == 'T'){ // TSP - idont know when we ended to get inputs for TSP...
             int size = get_size(head);
@@ -85,7 +85,7 @@ int main(){
                 deleteGraph_cmd(&head);
                 return -1;
             }
-            printf("TSP shortest path: %d\n",TSP(head, &arr[0], i));
+            printf("TSP shortest path: %d \n",TSP(head, &arr[0], i));
             free(arr);
         }
     }
