@@ -18,11 +18,6 @@ int main(){
                 deleteGraph_cmd(&head);
             }
             scanf(" %d",&num_of_nodes);
-            if (num_of_nodes <= 0){
-                chr = 'a';
-                continue;
-            }
-
             idx = 0;
             while(idx < num_of_nodes){
                 scanf(" %c ",&chr);
@@ -53,7 +48,7 @@ int main(){
                 n->node_id = node_id;
                 insert_node_cmd(&head, n); // add node to the linked list of nodes 
 
-               while (scanf(" %d ",&dest_node)){
+               while (scanf(" %d ",&dest_node) == 1){
                     scanf(" %d ",&weight);
                     insert_edge(&head, n->node_id, weight, dest_node);
                 }
