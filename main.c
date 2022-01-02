@@ -12,7 +12,7 @@ int main(){
     pnode n;
     // pedge e, tempE;
     
-    for(;scanf("%c ",&chr)!=EOF && chr != 'q';){
+    for(;scanf("%c ",&chr)!=EOF;){
         if (chr == 'A'){ // case A create whole graph (linked list of nodes and ea node hold list of edges)
             if (head != NULL){
                 deleteGraph_cmd(&head);
@@ -83,6 +83,7 @@ int main(){
             printf("TSP shortest path: %d \n",TSP(head, &arr[0], i));
             free(arr);
         }
+        printGraph_cmd(head);
     }
     if (head != NULL){
         deleteGraph_cmd(&head);
