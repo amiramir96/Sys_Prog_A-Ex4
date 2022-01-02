@@ -79,7 +79,6 @@ int main(){
             printf("TSP shortest path: %d \n",TSP(head, &arr[0], i));
             free(arr);
         }
-        printf("ended loop\n");
     }
     if (head != NULL){
         deleteGraph_cmd(&head);
