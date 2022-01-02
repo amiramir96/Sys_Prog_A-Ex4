@@ -238,7 +238,8 @@ void insert_edge(pnode * head, int from, int weight, int to){
     while(*pe){
         pe = &((*pe)->next);
     }
-    *pe = e; //set next to e
+    *pe = e;
+    (*pe)->next = NULL; //set next to e
     return;
 }
 

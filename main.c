@@ -12,17 +12,17 @@ int main(){
     pnode n;
     // pedge e, tempE;
     
-    for(;scanf("%c",&chr)!=EOF;){
+    for(;scanf("%c ",&chr)!=EOF;){
         if (chr == 'A'){ // case A create whole graph (linked list of nodes and ea node hold list of edges)
             if (head != NULL){
                 deleteGraph_cmd(&head);
                 head = NULL;
             }
-            scanf("%d",&num_of_nodes);
+            scanf("%d ",&num_of_nodes);
             idx = 0;
             while(idx < num_of_nodes){
-                scanf("%c",&chr);
-                scanf("%d",&node_id); // start of new node
+                scanf("%c ",&chr);
+                scanf("%d ",&node_id); // start of new node
                 n = (pnode)malloc(sizeof(node));
                 if (n == NULL){
                     deleteGraph_cmd(&head);
@@ -32,8 +32,8 @@ int main(){
                 insert_node_cmd(&head, n); // add node to the linked list of nodes 
 
                 // e = n->edges; // add the edges now.
-                while (scanf("%d",&dest_node) == 1){
-                    scanf("%d",&weight);
+                while (scanf("%d ",&dest_node) == 1){
+                    scanf("%d ",&weight);
                     insert_edge(&head, n->node_id, weight, dest_node);
                 }
                 idx++;
@@ -42,37 +42,37 @@ int main(){
             }
         }
         else if (chr == 'B'){ // B case - add specific one node
-            if (scanf("%d",&node_id)){ // else, skip.
+            if (scanf("%d ",&node_id)){ // else, skip.
                 n = get_node(&head, node_id);
                 freeEdges(n->edges);
                 insert_node_cmd(&head, n); // add node to the linked list of nodes 
 
-                while (scanf("%d",&dest_node) == 1){
-                    scanf("%d",&weight);
+                while (scanf("%d ",&dest_node) == 1){
+                    scanf("%d ",&weight);
                     insert_edge(&head, n->node_id, weight, dest_node);
                 }
             }
         }
         else if (chr == 'D'){ // delete node
-            scanf("%d",&node_id);
+            scanf("%d ",&node_id);
             delete_node_cmd(&head, node_id);
         }
         else if (chr == 'S'){ // shortest path
             int src, dest;
-            scanf("%d",&src);
-            scanf("%d",&dest);
+            scanf("%d ",&src);
+            scanf("%d ",&dest);
             printf("Dijsktra shortest path: %d \n",shortest_path(head, src, dest));
         }
         else if (chr == 'T'){ // TSP - idont know when we ended to get inputs for TSP...
             int size;
-            scanf("%d",&size);
+            scanf("%d ",&size);
             int * arr = (int*)malloc(size*sizeof(int));
             if (arr == NULL){
                 deleteGraph_cmd(&head);
                 return -1;
             }
             int i = 0;
-            while (scanf("%d",&num)){
+            while (scanf("%d ",&num)){
                 arr[i] = num;
                 i++;
             }
