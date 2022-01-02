@@ -12,7 +12,7 @@ int main(){
     pnode n;
     // pedge e, tempE;
     
-    for(;scanf(" %c",&chr)!=EOF;){
+    for(;scanf(" %c",&chr)!=EOF && chr != '\0';){
         if (chr == 'A'){ // case A create whole graph (linked list of nodes and ea node hold list of edges)
             if (head != NULL){
                 deleteGraph_cmd(&head);
@@ -42,15 +42,11 @@ int main(){
         }
         else if (chr == 'B'){ // B case - add specific one node
             if (scanf(" %d ",&node_id)){ // else, skip.
-                n = (pnode)malloc(sizeof(node));
-                if (n == NULL){
-                    deleteGraph_cmd(&head);
-                    return -1;
-                }
-                n->node_id = node_id;
+                n = get_node(&head, node_id);
+                freeEdges(n->edges);
                 insert_node_cmd(&head, n); // add node to the linked list of nodes 
 
-               while (scanf(" %d ",&dest_node) == 1){
+                while (scanf(" %d ",&dest_node) == 1){
                     scanf(" %d ",&weight);
                     insert_edge(&head, n->node_id, weight, dest_node);
                 }
