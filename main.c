@@ -30,7 +30,7 @@ int main(){
                 }
                 n->node_id = node_id;
                 insert_node_cmd(&head, n); // add node to the linked list of nodes 
-
+                n = NULL;
                 // e = n->edges; // add the edges now.
                 while (scanf("%d ",&dest_node) == 1){
                     scanf("%d ",&weight);
@@ -55,6 +55,7 @@ int main(){
                     scanf("%d ",&weight);
                     insert_edge(&head, n->node_id, weight, dest_node);
                 }
+                n = NULL;
             }
         }
         else if (chr == 'D'){ // delete node
@@ -89,9 +90,9 @@ int main(){
     if (head != NULL){
         deleteGraph_cmd(&head);
     }
-    if (n != NULL){
-        free(n);
-    }
+    // if (n){
+    //     free(n);
+    // }
     return 0;
 }
 
