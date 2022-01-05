@@ -158,7 +158,6 @@ void delete_node_cmd(pnode * head, int node_id){
     // stage 2:
     p = *head;
     pedge eHead = (pedge)malloc(sizeof(pedge));
-    pedge prev;
     pedge toDeleteEdge;
     while (p != NULL){
         pedge eHead = p->edges;
@@ -171,6 +170,7 @@ void delete_node_cmd(pnode * head, int node_id){
             eHead = NULL; // found the relevant edge to remove and deleted it.
         }
         while (eHead != NULL){
+            pedge prev;
             prev = eHead;
             if (eHead->next != NULL && eHead->next->endpoint->node_id == node_id){
                 toDeleteEdge = eHead->next;
