@@ -9,7 +9,7 @@ int main(){
     int weight, dest_node;
     int num;
     pnode head = NULL;
-    pnode n;
+    pnode n = NULL;
     // pedge e, tempE;
     
     for(;scanf("%c ",&chr)!=EOF;){
@@ -89,9 +89,9 @@ int main(){
     if (head != NULL){
         deleteGraph_cmd(&head);
     }
-    // if (n != NULL){
-    //     free(n);
-    // }
+    if (n != NULL){
+        free(n);
+    }
     return 0;
 }
 
