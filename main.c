@@ -89,9 +89,9 @@ int main(){
     if (head != NULL){
         deleteGraph_cmd(&head);
     }
-    if (n != NULL){
-        free(n);
-    }
+    // if (n != NULL){
+    //     free(n);
+    // }
     return 0;
 }
 
